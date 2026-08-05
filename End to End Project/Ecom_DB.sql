@@ -57,4 +57,9 @@ group by Payment_Mode;
 
 select * from orders 
 where Order_Status = 'Cancelled';
- 
+
+-- Check delivery date 
+
+select Delivery_Date from orders
+where Delivery_Date = "Order_Date";
+  
