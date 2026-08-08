@@ -127,7 +127,11 @@ order by mrp desc;
 
 -- Q3.Calculate Estimated Revenue for each category
 
-
+Select (category) , 
+sum(discountedsellingPrice * availableQuantity) AS Total_Revenue
+from orders
+group by category
+order by Total_Revenue;
 
 -- Q4. Find all products where MRP is greater than ₹500 and discount is less than 10%.
 SELECT DISTINCT name, mrp, discountPercent
@@ -136,12 +140,14 @@ WHERE mrp > 500 AND discountPercent < 10
 ORDER BY mrp DESC, discountPercent DESC;
 
 -- Q5. Identify the top 5 categories offering the highest average discount percentage.
-SELECT category,
-ROUND(AVG(discountPercent),2) AS avg_discount
-FROM zepto
-GROUP BY category
-ORDER BY avg_discount DESC
-LIMIT 5;
+-- SELECT category,
+-- ROUND(AVG(discountPercent),2) AS avg_discount
+-- FROM zepto
+-- GROUP BY category
+-- ORDER BY avg_discount DESC
+-- LIMIT 5;
+
+
 
 -- Q6. Find the price per gram for products above 100g and sort by best value.
 SELECT DISTINCT name, weightInGms, discountedSellingPrice,
