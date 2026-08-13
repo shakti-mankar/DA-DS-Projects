@@ -160,13 +160,21 @@ FROM ORDERS
 WHERE WEIGHTINGMS >= 100
 ORDER BY PRICE_PER_GRAM;
 
---Q7.Group the products into categories like Low, Medium, Bulk.
-SELECT DISTINCT name, weightInGms,
-CASE WHEN weightInGms < 1000 THEN 'Low'
-	WHEN weightInGms < 5000 THEN 'Medium'
-	ELSE 'Bulk'
-	END AS weight_category
-FROM zepto;
+-- Q 7.Group the products into categories like Low, Medium, Bulk.
+-- SELECT DISTINCT name, weightInGms,
+-- CASE WHEN weightInGms < 1000 THEN 'Low'
+-- 	WHEN weightInGms < 5000 THEN 'Medium'
+-- 	ELSE 'Bulk'
+-- 	END AS weight_category
+-- FROM zepto;
+
+Select distinct name , weightingms , 
+case when weightInGms < 5000 THEN 'Medium'
+else 'BULK'
+END as weight_category
+from orders;
+
+
 
 --Q8.What is the Total Inventory Weight Per Category 
 SELECT category,
