@@ -154,8 +154,11 @@ LIMIT 5;
 
 -- Q6. Find the price per gram for products above 100g and sort by best value.
 
-
-SELECT distinct NAME 
+Select distinct	name , weightInGms , discountedSellingPrice ,
+Round(discountedSellingPrice/weightIngms,2) AS PRICE_PER_GRAM
+FROM ORDERS
+WHERE WEIGHTINGMS >= 100
+ORDER BY PRICE_PER_GRAM;
 
 --Q7.Group the products into categories like Low, Medium, Bulk.
 SELECT DISTINCT name, weightInGms,
