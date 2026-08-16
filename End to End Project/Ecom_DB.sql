@@ -4,8 +4,7 @@ use Ecommerce;
 
 select * from orders;
 
-
-
+select Delivery_Date from orders;
 -- Total Orders
 
 select count(*) as Total_orders from orders;
