@@ -139,6 +139,14 @@ FROM zepto
 WHERE mrp > 500 AND discountPercent < 10
 ORDER BY mrp DESC, discountPercent DESC;
 
+Select distinct name , mrp , discountPercent
+from orders
+where mrp > 500 and discountPercent < 10
+order by mrp ,
+discountPercent desc;
+
+
+
 -- Q5. Identify the top 5 categories offering the highest average discount percentage.
 -- SELECT category,
 -- ROUND(AVG(discountPercent),2) AS avg_discount
@@ -146,6 +154,14 @@ ORDER BY mrp DESC, discountPercent DESC;
 -- GROUP BY category
 -- ORDER BY avg_discount DESC
 -- LIMIT 5;
+
+
+Select category, 
+round(AVG(discountPercent),2) as AVG_discount
+from orders
+group by category
+order by AVG_discount DESC
+LIMIT 5;
 
 
 Select category
