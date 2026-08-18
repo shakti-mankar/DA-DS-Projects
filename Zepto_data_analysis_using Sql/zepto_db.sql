@@ -148,7 +148,7 @@ ORDER BY mrp DESC, discountPercent DESC;
 -- LIMIT 5;
 
 
-
+Select category
 -- Q6. Find the price per gram for products above 100g and sort by best value.
 SELECT DISTINCT name, weightInGms, discountedSellingPrice,
 ROUND(discountedSellingPrice/weightInGms,2) AS price_per_gram
