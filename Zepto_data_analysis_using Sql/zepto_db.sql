@@ -118,14 +118,16 @@ limit 10;
 
 --  Q2.What are the Products with High MRP but Out of Stock
 
+select distinct Name , mrp 
+from orders
+where outOfStock = 'True' and mrp > 300
+order by mrp desc;
 
+ 
 
 -- Q3.Calculate Estimated Revenue for each category
-SELECT category,
-SUM(discountedSellingPrice * availableQuantity) AS total_revenue
-FROM zepto
-GROUP BY category
-ORDER BY total_revenue;
+
+
 
 -- Q4. Find all products where MRP is greater than ₹500 and discount is less than 10%.
 SELECT DISTINCT name, mrp, discountPercent
