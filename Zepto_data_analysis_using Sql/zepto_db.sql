@@ -102,8 +102,7 @@ discountedSellingPrice = discountedSellingPrice/100.0;
 
 select mrp, discountedSellingPrice from orders;
 
-
---data analysis
+-- data analysis
 
 -- Q1. Find the top 10 best-value products based on the discount percentage.
 SELECT DISTINCT name, mrp, discountPercent
@@ -111,14 +110,17 @@ FROM zepto
 ORDER BY discountPercent DESC
 LIMIT 10;
 
---Q2.What are the Products with High MRP but Out of Stock
 
-SELECT DISTINCT name,mrp
-FROM zepto
-WHERE outOfStock = TRUE and mrp > 300
-ORDER BY mrp DESC;
+select distinct name , mrp discountPercent
+from orders
+order by discountPercent desc
+limit 10;
 
---Q3.Calculate Estimated Revenue for each category
+--  Q2.What are the Products with High MRP but Out of Stock
+
+
+
+-- Q3.Calculate Estimated Revenue for each category
 SELECT category,
 SUM(discountedSellingPrice * availableQuantity) AS total_revenue
 FROM zepto
