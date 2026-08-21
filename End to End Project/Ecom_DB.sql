@@ -4,6 +4,8 @@ use Ecommerce;
 
 select * from orders;
 
+
+
 -- Total Orders
 
 select count(*) as Total_orders from orders;
@@ -54,6 +56,4 @@ group by Payment_Mode;
 
 select * from orders 
 where Order_Status = 'Cancelled';
- 
--- 
  
