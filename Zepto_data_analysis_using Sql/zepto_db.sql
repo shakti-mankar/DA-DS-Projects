@@ -38,7 +38,7 @@ limit 10;
 select * from orders
 where name is null
 or
-ï»¿Category is null
+Category is null
 or 
 mrp is null
 or 
@@ -57,9 +57,7 @@ quantity is null;
 
 --  renaming column 
 
-SELECT column_name
-FROM information_schema.columns
-WHERE table_name = 'orders';
+
 
 
 -- Different product category
@@ -70,10 +68,37 @@ order by category;
 
 -- product in stock vs out of stock 
 
-select  outofstock , Count(sku_id)
+select  outofstock , Count(SerialNo)
 from orders
 group by outOfstock; 
 
-drop table zepto;
 
+-- product names present multiple times 
+
+select name , Count(SerialNo) as "number of IDS"
+from orders
+Group by Name
+Having count(SerialNo) > 1
+Order by count(SerialNo) Desc;
+ 
+ 
+-- data cleaning
+ 
+-- product price = 0
+
+select * from orders
+where mrp = 0 OR discountedSellingPrice = 0;
+
+delete from orders 
+where mrp = 0;
+
+SET SQL_SAFE_UPDATES = 0;
+
+-- COnvert paise into rupees
+
+Update orders 
+set mrp = mrp/100.0,
+discountedSellingPrice = discountedSellingPrice/100.0;
+
+select mrp, discountedSellingPrice from orders; 
 
